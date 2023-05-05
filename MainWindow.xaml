@@ -36,8 +36,14 @@
                     </RadioButton>
                     <RadioButton Style="{StaticResource BtnStyle}" Command="{Binding BookCommand}">
                         <Grid>
-                            <Image Source="Images/calculate.png" Style="{StaticResource Image_Style}"/>
+                            <Image Source="Images/book.png" Style="{StaticResource Image_Style}"/>
                             <TextBlock Text="Книга" Style="{StaticResource ResourceKey=MenuBtnText}"/>
+                        </Grid>
+                    </RadioButton>
+                    <RadioButton Style="{StaticResource BtnStyle}" Command="{Binding BookCommand}">
+                        <Grid>
+                            <Image Source="Images/add_box.png" Style="{StaticResource Image_Style}"/>
+                            <TextBlock Text="Добавить" Style="{StaticResource ResourceKey=MenuBtnText}"/>
                         </Grid>
                     </RadioButton>
                 </StackPanel>

@@ -8,7 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Images\calculate.png" />
+    <None Remove="Images\add_box.png" />
+    <None Remove="Images\book.png" />
     <None Remove="Images\close_fullscreen.png" />
     <None Remove="Images\home.png" />
     <None Remove="Images\open_in_full.png" />
@@ -17,7 +18,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Images\calculate.png">
+    <Resource Include="Images\add_box.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\book.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\close_fullscreen.png">
