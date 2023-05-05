@@ -5,9 +5,28 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AddressBook.View"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800"
-             Style="{StaticResource ResourceKey=Page}">
+             d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <TextBlock Text="Book" FontWeight="Bold" FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <DataGrid ItemsSource="{Binding Addresses}" RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="membersDataGrid" Style="{DynamicResource DataGridStyle1}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" IsReadOnly="True" Binding="{Binding Id}" CanUserResize="False" Width="auto"/>
+                <DataGridTextColumn Header="ФИО" IsReadOnly="True" Binding="{Binding FullName}" CanUserResize="False" Width="auto"/>
+                <DataGridTextColumn Header="Телефон" IsReadOnly="True" Binding="{Binding Phone}" CanUserResize="False" Width="*"/>
+                <DataGridTemplateColumn Header="Операции" IsReadOnly="True" Width="auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Style="{StaticResource gridEditButton}">
+                                    <TextBlock Text="Редактировать"/>
+                                </Button>
+                                <Button Margin="5 0 0 0" Style="{StaticResource gridRemoveButton}">
+                                    <TextBlock Text="Удалить"/>
+                                </Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </UserControl>

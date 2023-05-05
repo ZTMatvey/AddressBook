@@ -10,7 +10,7 @@
         ResizeMode="NoResize"
         WindowStyle="None"
         Background="Transparent"
-        Title="Address Book" Height="450" Width="600"
+        Title="Address Book" Height="600" Width="1200"
         xmlns:vm="clr-namespace:AddressBook.ViewModel">
 
     <Window.DataContext>
@@ -26,8 +26,8 @@
             </Grid.ColumnDefinitions>
 
             <Grid HorizontalAlignment="Stretch">
-                <Border Panel.ZIndex="1000" Background="#CCC2A3" CornerRadius="20 0 0 20 "/>
-                <StackPanel Panel.ZIndex="1000" Height="400">
+                <Border Panel.ZIndex="1000" Background="#CCC2A3" CornerRadius="10 0 0 10 "/>
+                <StackPanel Panel.ZIndex="1000" Height="250">
                     <RadioButton Margin="0" IsChecked="True" Style="{StaticResource BtnStyle}" Command="{Binding HomeCommand}">
                         <Grid>
                             <Image Source="Images/home.png" Style="{StaticResource Image_Style}"/>
