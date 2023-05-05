@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AddressBook.ViewModel
 {
-    internal sealed class HomeVM : ViewModelBase
+    internal sealed class AddVM : ViewModelBase
     {
     }
 }

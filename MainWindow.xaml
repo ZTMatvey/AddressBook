@@ -40,7 +40,7 @@
                             <TextBlock Text="Книга" Style="{StaticResource ResourceKey=MenuBtnText}"/>
                         </Grid>
                     </RadioButton>
-                    <RadioButton Style="{StaticResource BtnStyle}" Command="{Binding BookCommand}">
+                    <RadioButton Style="{StaticResource BtnStyle}" Command="{Binding AddCommand}">
                         <Grid>
                             <Image Source="Images/add_box.png" Style="{StaticResource Image_Style}"/>
                             <TextBlock Text="Добавить" Style="{StaticResource ResourceKey=MenuBtnText}"/>

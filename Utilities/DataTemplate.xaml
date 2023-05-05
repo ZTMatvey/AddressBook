@@ -9,4 +9,7 @@
     <DataTemplate DataType="{x:Type vm:BookVM}">
         <view:Book/>
     </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:AddVM}">
+        <view:Add/>
+    </DataTemplate>
 </ResourceDictionary>

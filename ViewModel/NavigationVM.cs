@@ -10,8 +10,8 @@ namespace AddressBook.ViewModel
 {
     internal sealed class NavigationVM : ViewModelBase
     {
-        private object _currentView;
-        public object CurrentView
+        private ViewModelBase _currentView;
+        public ViewModelBase CurrentView
         {
             get
             {
@@ -28,15 +28,20 @@ namespace AddressBook.ViewModel
 
         public ICommand BookCommand { get; set; }
 
+        public ICommand AddCommand { get; set; }
+
         public NavigationVM()
         {
             Home(new object());
             HomeCommand = new RelayCommand(execute: Home);
             BookCommand = new RelayCommand(execute: Book);
+            AddCommand = new RelayCommand(execute: Add);
         }
 
         private void Home(object obj) => CurrentView = new HomeVM();
 
         private void Book(object obj) => CurrentView = new BookVM();
+
+        private void Add(object obj) => CurrentView = new AddVM();
     }
 }
