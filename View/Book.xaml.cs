@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AddressBook.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,24 @@ namespace AddressBook.View
         public Book()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var context = DataContext as BookVM;
+            if (context != null)
+            {
+                context.DeleteCommand.Execute(this);
+            }
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            var context = DataContext as BookVM;
+            if (context != null)
+            {
+                context.EditCommand.Execute(this);
+            }
         }
     }
 }
