@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AddressBook.View"
+             xmlns:v="clr-namespace:AddressBook.Validators"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              Style="{StaticResource ResourceKey=Page}">
@@ -19,8 +20,24 @@
         </Grid.RowDefinitions>
         <TextBlock Padding="5" Margin="0 10 5 10" Text="ФИО:"/>
         <TextBlock Padding="5" Margin="0 10 5 10" Text="Телефон:" Grid.Row="1"/>
-        <TextBox Padding="5" Text="{Binding FullName ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged"}" Grid.Column="1" Tag="ФИО"/>
-        <TextBox Padding="5" Text="{Binding Phone}" Grid.Column="1" Tag="Телефон" Grid.Row="1"/>
-        <Button Grid.Row="2" Grid.ColumnSpan="2" Command="{Binding AddCommand}" Width="150" Height="50" HorizontalAlignment="Center" Content="Добавить"/>
+        <TextBox Padding="5" Grid.Column="1" Tag="ФИО">
+            <TextBox.Text>
+                <Binding Path="FullName" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <v:MinMaxCharacters MinChars="2" MaxChars="50"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <TextBox Padding="5" Grid.Column="1" Tag="Телефон" Grid.Row="1">
+            <TextBox.Text>
+                <Binding Path="Phone" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <v:PhoneText/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <Button IsEnabled="{Binding IsButtonEnabled}" Grid.Row="2" Grid.ColumnSpan="2" Command="{Binding AddCommand}" Width="150" Height="50" HorizontalAlignment="Center" Content="Добавить"/>
     </Grid>
 </UserControl>

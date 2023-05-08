@@ -3,10 +3,12 @@ using HelpDef.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Xml.Serialization;
 
 namespace AddressBook.ViewModel
 {
@@ -36,10 +38,31 @@ namespace AddressBook.ViewModel
         public NavigationVM()
         {
             Home(new object());
-            _people = new ObservableCollection<Person>();
+            LoadPeople();
             HomeCommand = new RelayCommand(execute: Home);
             BookCommand = new RelayCommand(execute: Book);
             AddCommand = new RelayCommand(execute: Add);
+        }
+
+        public void LoadPeople()
+        {
+            if (!File.Exists("people.xml"))
+            {
+                _people = new ObservableCollection<Person>();
+                return;
+            }
+
+            using var stream = new FileStream("people.xml", FileMode.OpenOrCreate);
+            using var reader = new StreamReader(stream);
+            XmlSerializer serializer = new XmlSerializer(typeof(ObservableCollection<Person>));
+            _people = (ObservableCollection<Person>)serializer.Deserialize(reader);
+        }
+
+        public void SavePeople()
+        {
+            using var stream = new FileStream("people.xml", FileMode.OpenOrCreate);
+            XmlSerializer serializer = new XmlSerializer(typeof(ObservableCollection<Person>));
+            serializer.Serialize(stream, _people);
         }
 
         private void Home(object? obj) => CurrentView = new HomeVM();

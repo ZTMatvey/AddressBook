@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AddressBook.Model
 {
-    internal sealed class Person
+    public sealed class Person
     {
         public int Id { get; set; }
 
@@ -19,6 +19,11 @@ namespace AddressBook.Model
             Id = id;
             FullName = fullName;
             Phone = phone;
+        }
+
+        public Person()
+        {
+            
         }
     }
 }

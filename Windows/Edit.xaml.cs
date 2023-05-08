@@ -1,4 +1,5 @@
-﻿using AddressBook.ViewModel;
+﻿using AddressBook.Model;
+using AddressBook.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,21 +12,23 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AddressBook
+namespace AddressBook.Windows
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Edit.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Edit : Window
     {
         private readonly BitmapImage _minimize;
         private readonly BitmapImage _maximize;
         private bool _isMinimized;
-        public MainWindow()
+
+        public Edit(Person person)
         {
+            InitializeComponent();
+            ((EditVM)DataContext).Person = person;
             InitializeComponent();
             _minimize = new BitmapImage();
             _minimize.BeginInit();
@@ -36,12 +39,6 @@ namespace AddressBook
             _maximize.UriSource = new Uri(@"pack://application:,,,/Images/open_in_full.png");
             _maximize.EndInit();
             Minimize();
-            Closing += MainWindow_Closing;
-        }
-
-        private void MainWindow_Closing(object? sender, System.ComponentModel.CancelEventArgs e)
-        {
-            ((NavigationVM)DataContext).SavePeople();
         }
 
         private void CloseApp_Click(object sender, RoutedEventArgs e)

@@ -10,12 +10,12 @@ using System.Windows.Input;
 
 namespace AddressBook.ViewModel
 {
-    internal sealed class AddVM : ViewModelBase
+    internal sealed class EditVM : ViewModelBase
     {
         private int MIN_CHARACTERS = 2;
         private int MAX_CHARACTERS = 50;
-        private ICollection<Person> _people;
-        private PersonFactory _personFactory;
+
+        public Person Person { get; set; }
 
         public ICommand AddCommand { get; set; }
 
@@ -54,17 +54,16 @@ namespace AddressBook.ViewModel
             }
         }
 
-        public AddVM(ICollection<Person> people)
+        public EditVM()
         {
-            _people = people;
-            _personFactory = new PersonFactory(people.Count > 0 ? people.Max(e => e.Id) : 0);
             AddCommand = new RelayCommand(execute: Add);
             IsButtonEnabled = false;
         }
 
         private void Add(object? o)
         {
-            _people.Add(_personFactory.Create(FullName, Phone));
+            Person.FullName = FullName;
+            Person.Phone = Phone;
             FullName = string.Empty;
             Phone = string.Empty;
         }

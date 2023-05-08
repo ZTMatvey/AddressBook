@@ -1,4 +1,5 @@
 ﻿using AddressBook.Model;
+using AddressBook.Windows;
 using HelpDef.Utilities;
 using Microsoft.Win32;
 using System;
@@ -35,7 +36,11 @@ namespace AddressBook.ViewModel
         {
             People = people;
             DeleteCommand = new RelayCommand(execute: Delete);
-            EditCommand = new RelayCommand(execute: o => MessageBox.Show(""));
+            EditCommand = new RelayCommand(execute: o =>
+            {
+                var window = new Edit(SelectedPerson);
+                window.ShowDialog();
+            });
         }
 
         private void Delete(object? o)
